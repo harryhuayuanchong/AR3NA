@@ -1,14 +1,30 @@
 import React, { useState } from "react";
 import styles from "../style";
-import Carousels from "./Carousels";
+import Carousels2 from "./Carousels";
 import { Banner1 } from "../assets";
+import { Artboard1, Artboard2, Artboard3 } from "../assets";
+
+const slides = [
+  {
+    id: 1,
+    imageUrl: Artboard1,
+  },
+  {
+    id: 2,
+    imageUrl: Artboard2,
+  },
+  {
+    id: 3,
+    imageUrl: Artboard3,
+  },
+]
 
 const Hero = () => {
   return (
     <section id="home" className={`flex md:flex-row flex-col ${styles.paddingY}`}>
       <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
         <div>
-          <Carousels />
+          <Carousels2 slides={slides} />
         </div>
         
         <div className="relative w-full h-96 bg-black text-white">

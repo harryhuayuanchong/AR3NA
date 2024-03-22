@@ -37,6 +37,10 @@ import Ig from "./Ig.svg";
 import In from "./In.svg";
 import X from "./X.svg";
 import Yt from "./Yt.svg";
+import Artboard1 from "./Artboard1.jpg";
+import Artboard2 from "./Artboard2.jpg";
+import Artboard3 from "./Artboard3.jpg";
+import darkGradient from "./darkGradient.png";
 
 export {
   airbnb,
@@ -77,5 +81,9 @@ export {
   Ig,
   In,
   X,
-  Yt
+  Yt,
+  Artboard1,
+  Artboard2,
+  Artboard3,
+  darkGradient
 };

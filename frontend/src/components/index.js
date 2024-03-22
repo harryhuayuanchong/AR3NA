@@ -5,6 +5,7 @@ import Carousels from "./Carousels";
 import Card from "./Card";
 import EventCard from "./EventCard";
 import FansCard from "./FansCard";
+import Carousels2 from "./Carousels2"
 
 export {
   Navbar,
@@ -14,4 +15,5 @@ export {
   Card,
   EventCard,
   FansCard,
+  Carousels2
 };
