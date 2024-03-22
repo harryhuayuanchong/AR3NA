@@ -27,6 +27,16 @@ import one from "./one.jpg";
 import two from "./two.jpg";
 import three from "./three.jpg";
 import banner from "./banner.svg";
+import Banner1 from "./Banner1.png";
+import event1 from "./event1.jpg";
+import event2 from "./event2.jpg";
+import event3 from "./event3.jpg";
+import event4 from "./event4.jpeg";
+import Fb from "./Fb.svg";
+import Ig from "./Ig.svg";
+import In from "./In.svg";
+import X from "./X.svg";
+import Yt from "./Yt.svg";
 
 export {
   airbnb,
@@ -57,5 +67,15 @@ export {
   one,
   two,
   three,
-  banner
+  banner,
+  Banner1,
+  event1,
+  event2,
+  event3,
+  event4,
+  Fb,
+  Ig,
+  In,
+  X,
+  Yt
 };
