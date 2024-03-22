@@ -7,7 +7,7 @@ const events = [
   {
     id: 1,
     imageUrl: one,
-    title: 'Trending Event 1',
+    title: '2024 IU H.E.R World Tour',
     date: '2024/04/07 (Sun)',
     location: 'Taiwan, Taipei',
     participants: "1.06M"

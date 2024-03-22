@@ -18,13 +18,11 @@ const FansCard = ({ imageUrl, title, date, location, link, participants }) => {
         </div>
 
         {/* Text container */}
-        <div className="w-1/2 flex flex-col justify-between p-6 bg-darkred text-white rounded-r-2xl">
-          <div className="flex justify-between items-start">
-            <div className="text-xs bg-red-800 px-3 py-1 rounded-full">{participants} participants</div>
-          </div>
-          <div>
-            <h3 className={`text-3xl font-bold leading-tight ${hoverStyles}`}>{title}</h3>
-            <p className="text-gray-400 text-base">{date} | {location}</p>
+        <div className="w-1/2 flex flex-col justify-between p-10 bg-darkred text-white rounded-r-2xl">
+          <div className="grid justify-between items-start">
+            <div className="text-xs bg-red-800 px-3 py-1 rounded-full w-[fit-content]">{participants} participants</div>
+            <h3 className={`text-3xl font-bold leading-tight mt-[revert] ${hoverStyles}`}>{title}</h3>
+            <p className="text-gray-400 text-base mt-[10px]">{date}</p>
           </div>
         </div>
       </div>

@@ -25,7 +25,7 @@
     "ethers": "^6.9.0",
     "flowbite-react": "^0.7.3",
     "framer-motion": "^10.16.16",
-    "mint.club-v2-sdk": "^0.0.37",
+    "mint.club-v2-sdk": "0.0.82",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
