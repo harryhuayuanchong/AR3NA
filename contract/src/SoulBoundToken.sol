@@ -22,6 +22,19 @@ contract SoulBoundToken is ERC1155, Ownable {
     mapping(uint256 => mapping(address => bool)) public whitelistByTokenId;
     mapping(address => bool) public hasMinted;
 
+    event TokenMinted(address indexed _account, uint256 indexed _id, uint256 _amount);
+    event WhitelistUpdated(uint256 indexed _tokenId, address indexed _account, bool _isWhitelisted);
+    event URIUpdated(string _newURI);
+    event Withdrawal(address indexed _to, uint256 _amount);
+
+    event TicketsUpdated(
+        address indexed _contract_address,
+        uint256[] _ticket_ids,
+        string[] _names,
+        uint256[] _fees,
+        uint256[] _supplies
+    );
+
     constructor(
         string memory _contractName,
         string memory _uri,
@@ -46,10 +59,12 @@ contract SoulBoundToken is ERC1155, Ownable {
 
         baseMetadataURI = _uri;
         name = _contractName;
+        emit TicketsUpdated(address(this), _ids, _names, _fees, _maxSupplies);
     }
 
     function setURI(string memory newuri) public onlyOwner {
         _setURI(newuri);
+        emit URIUpdated(newuri);
     }
 
     function uri(uint256 _tokenid) public view override returns (string memory) {
@@ -60,6 +75,7 @@ contract SoulBoundToken is ERC1155, Ownable {
         require(_tokenIdExists(tokenId), "Token ID does not exist");
         for (uint256 i = 0; i < addresses.length; i++) {
             whitelistByTokenId[tokenId][addresses[i]] = true;
+            emit WhitelistUpdated(tokenId, addresses[i], true);
         }
     }
 
@@ -67,6 +83,7 @@ contract SoulBoundToken is ERC1155, Ownable {
         require(_tokenIdExists(tokenId), "Token ID does not exist");
         for (uint256 i = 0; i < addresses.length; i++) {
             whitelistByTokenId[tokenId][addresses[i]] = false;
+            emit WhitelistUpdated(tokenId, addresses[i], false);
         }
     }
 
@@ -90,6 +107,7 @@ contract SoulBoundToken is ERC1155, Ownable {
         _mint(account, id, amount, "");
         data.supply += amount;
         hasMinted[msg.sender] = true;
+        emit TokenMinted(account, id, amount);
     }
 
     function _update(
@@ -108,4 +126,12 @@ contract SoulBoundToken is ERC1155, Ownable {
         return tokenData[tokenId];
     }
 
+    function withdraw() public onlyOwner {
+        uint256 amount = address(this).balance;
+        require(amount > 0, "No ether left to withdraw");
+
+        (bool success, ) = msg.sender.call{value: amount}("");
+        require(success, "Transfer failed.");
+        emit Withdrawal(msg.sender, amount);
+    }
 }
