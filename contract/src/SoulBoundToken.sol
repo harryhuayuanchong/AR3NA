@@ -19,6 +19,8 @@ contract SoulBoundToken is ERC1155, Ownable {
     string public name;
 
     mapping(uint256 => TokenData) public tokenData;
+    mapping(uint256 => mapping(address => bool)) public whitelistByTokenId;
+    mapping(address => bool) public hasMinted;
 
     constructor(
         string memory _contractName,
@@ -54,11 +56,41 @@ contract SoulBoundToken is ERC1155, Ownable {
         return string(abi.encodePacked(baseMetadataURI, Strings.toString(_tokenid), ".json"));
     }
 
+    function addToWhitelist(uint256 tokenId, address[] calldata addresses) external onlyOwner {
+        require(_tokenIdExists(tokenId), "Token ID does not exist");
+        for (uint256 i = 0; i < addresses.length; i++) {
+            whitelistByTokenId[tokenId][addresses[i]] = true;
+        }
+    }
+
+    function removeFromWhitelist(uint256 tokenId, address[] calldata addresses) external onlyOwner {
+        require(_tokenIdExists(tokenId), "Token ID does not exist");
+        for (uint256 i = 0; i < addresses.length; i++) {
+            whitelistByTokenId[tokenId][addresses[i]] = false;
+        }
+    }
 
     function _tokenIdExists(uint256 tokenId) private view returns (bool) {
         return tokenData[tokenId].maxSupply > 0;
     }
 
+    function mint(
+        address account,
+        uint256 id,
+        uint256 amount
+    ) public payable {
+        require(_tokenIdExists(id), "Token ID does not exist");
+        require(whitelistByTokenId[id][msg.sender], "Caller is not whitelisted for this token");
+        require(!hasMinted[msg.sender], "Caller has already minted a token");
+        require(amount == 1, "Can only mint one token at a time");
+        TokenData storage data = tokenData[id];
+        require(msg.value == data.mintFee * amount, "Insufficient payment for minting");
+        require(data.supply + amount <= data.maxSupply, "Exceeds maximum supply");
+
+        _mint(account, id, amount, "");
+        data.supply += amount;
+        hasMinted[msg.sender] = true;
+    }
 
     function _update(
         address from,
