@@ -9,11 +9,11 @@ const CreateEvent = () => {
   const eventName = useRef(null); // 這邊後續可以去監聽前面創建的eventName，將null修改成監聽結果
 
   return (
-    <div className={`bg-black min-h-screen ${styles.flexStart} ${styles.padding}`}>
+    <div className={`bg-black min-h-screen ${styles.flexStart} ${styles.paddingNew}`}>
       <div className={`${styles.boxWidth}`}>
         <div className="bg-black p-8 rounded-md">
           <h1 className="text-3xl font-bold mb-6 text-white">Create New Event</h1>
-          <p className="mb-8 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+          <p className="mb-20 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
 
           <div className="mb-4">
             <h2 className="text-xl font-semibold mb-5 text-white">About The Event</h2>

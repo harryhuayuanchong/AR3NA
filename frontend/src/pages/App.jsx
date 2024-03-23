@@ -24,7 +24,7 @@ const App = () => (
         </div>
       </div>
 
-      <div className="w-full flex justify-between items-center md:flex-row flex-col pt-6 border-t-[2px] border-t-[#ffffff]"></div>
+      <div className="w-full flex justify-between items-center md:flex-row flex-col border-t-[2px] border-t-[#ffffff]"></div>
 
       <Routes>
         <Route path="/" element={<Hero />} />
