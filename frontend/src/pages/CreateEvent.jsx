@@ -32,7 +32,7 @@ const CreateEvent = () => {
     <div className={`bg-black min-h-screen ${styles.flexStart} ${styles.paddingNew}`}>
       <div className={`${styles.boxWidth}`}>
         <div className="bg-black p-8 rounded-md">
-          <h1 className="text-3xl font-bold mb-6 text-white">Create New Event</h1>
+          <h1 className="text-5xl font-bold mb-6 text-white">Create New Event</h1>
           <p className="mb-20 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
 
           <div className="mb-4">
@@ -151,70 +151,75 @@ const CreateEvent = () => {
             <div className="w-full flex justify-between items-center md:flex-row flex-col pt-20 border-t-[2px] border-t-[#ffffff]"></div>
           
             <div>
-                <div className="inline-grid">
-                  <div className="gap-5">
-                      <label htmlFor="sbt" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                        SBT:
-                      </label>
-                      <div className="flex gap-5">
-                        <input type="text" placeholder="" className="bg-eerieDark rounded text-white w-[1000px]" />
-                        <Button className="white px-3 rounded-xl" onClick={() => setOpenModal(true)}>Create</Button>
-                      </div>
-                      
-                      <Modal show={openModal} size="md" popup onClose={() => setOpenModal(false)} initialFocus={eventName}>
-                        <Modal.Header />
-                        <Modal.Body>
-                          <div className="space-y-6">
-                            <h3 className="text-xl font-medium text-gray-900 dark:text-white">Create SBT Token</h3>
-                            <div>
-                              <div className="mb-2 block">
-                                <Label htmlFor="text" value="Event Name" />
-                              </div>
-                              <TextInput id="text" ref={eventName} placeholder="ERC720 Token" required />
-                            </div>
-                            <div>
-                              <div className="mb-2 block">
-                                <Label htmlFor="address" value="Address" />
-                              </div>
-                              <TextInput id="address" type="address" required />
-                            </div>
-                            <div className="w-full">
-                              <Button>Create SBT</Button>
-                            </div>
+              <div className="inline-grid">
+                <div className="gap-5">
+                  <label htmlFor="sbt" className="pb-1.5 block text-sm font-medium leading-6 text-white">
+                    SBT:
+                  </label>
+                  <div className="flex gap-5">
+                    <input type="text" placeholder="" className="bg-eerieDark rounded text-white w-[1000px]" />
+                    <Button className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-3 rounded-xl" onClick={() => setOpenModal(true)}>Create</Button>
+                  </div>
+                  
+                  <Modal  show={openModal} size="md" popup onClose={() => setOpenModal(false)} initialFocus={eventName}>
+                    <Modal.Header className="bg-black" />
+                    <Modal.Body className="bg-black">
+                      <div className="space-y-6 bg-black">
+                        <h3 className="text-xl font-medium text-gray-900 dark:text-white">Create SBT Token</h3>
+                        <div>
+                          <div className="mb-2 block">
+                            <Label htmlFor="text" value="Event Name" />
                           </div>
-                        </Modal.Body>
-                        <Modal.Footer>
-                          <Button onClick={() => setOpenModal(false)}>I accept</Button>
-                          <Button color="gray" onClick={() => setOpenModal(false)}>
-                            Decline
-                          </Button>
-                        </Modal.Footer>
-                      </Modal>
-                    </div>
-                    <div className="gap-5 mt-5">
-                      <label htmlFor="bonding" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                        Bonding Curve:
-                      </label>
-                      {curves.map((curve, index) => (
-                        <div key={index} className="flex gap-5 mb-5">
-                          <input
-                            type="text"
-                            value={curve}
-                            onChange={(e) => updateCurve(index, e.target.value)}
-                            className="bg-eerieDark rounded text-white w-[1000px]"
-                          />
-                          <Button className="px-3 rounded-xl" href="https://mint.club/create" target="_blank">Create</Button>
-                          {curves.length > 1 && (
-                            <h3 onClick={() => removeCurve(index)} className="px-3 py-2 rounded-xl text-white bg-red-500 hover:bg-red-600">
-                              Delete
-                            </h3>
-                          )}
+                          <TextInput id="text" ref={eventName} placeholder="ERC720 Token" required />
                         </div>
-                      ))}
-                      {/* Button to add new address input field */}
-                      <h3 onClick={addCurve} className="mt-4 text-white hover:text-hover underline">Add another curve</h3>
-                    </div>
+                        <div>
+                          <div className="mb-2 block">
+                            <Label htmlFor="address" value="Address" />
+                          </div>
+                          <TextInput id="address" type="address" required />
+                        </div>
+                        <div className="w-full">
+                          <Button>Create SBT</Button>
+                        </div>
+                      </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button onClick={() => setOpenModal(false)}>I accept</Button>
+                      <Button color="gray" onClick={() => setOpenModal(false)}>
+                        Decline
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
                 </div>
+                <div className="gap-5 mt-5">
+                  <label htmlFor="bonding" className="pb-1.5 block text-sm font-medium leading-6 text-white">
+                    Bonding Curve:
+                  </label>
+                  {curves.map((curve, index) => (
+                    <div key={index} className="flex gap-5 mb-5">
+                      <input
+                        type="text"
+                        value={curve}
+                        onChange={(e) => updateCurve(index, e.target.value)}
+                        className="bg-eerieDark rounded text-white w-[1000px]"
+                      />
+                      <Button className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-3 rounded-xl" href="https://mint.club/create" target="_blank">Create</Button>
+                      {curves.length > 1 && (
+                        <h3 onClick={() => removeCurve(index)} className="px-3 py-2 rounded-xl text-white bg-red-500 hover:bg-red-600">
+                          Delete
+                        </h3>
+                      )}
+                    </div>
+                  ))}
+                  {/* Button to add new address input field */}
+                  <h3 onClick={addCurve} className="mt-4 text-white hover:text-hover underline">Add another curve</h3>
+                </div>
+              </div>
+            </div>
+            <div className="text-center mt-20 rounded-2xl">
+              <button className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-6 py-2 rounded-full">
+                Submit
+              </button>
             </div>
           </div>
         </div>
