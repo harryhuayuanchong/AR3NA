@@ -1,12 +1,38 @@
 import React from "react";
 import styles from "../style";
-
+import axios from 'axios';
 import { Button, Modal, Label, TextInput } from 'flowbite-react';
 import { useState, useRef } from 'react';
 
 const CreateEvent = () => {
   const [openModal, setOpenModal] = useState(false);
-  const eventName = useRef(null); // 這邊後續可以去監聽前面創建的eventName，將null修改成監聽結果
+
+  const [eventName, setEventName] = useState("");
+  const [genre, setGenre] = useState("");
+  const [eventDate, setEventDate] = useState("");
+  const [description, setDescription] = useState("");
+  const [location, setLocation] = useState("");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent default form submission behavior
+
+    const formData = {
+      name: eventName,
+      genre: genre,
+      date: eventDate,
+      information: description,
+      location: location,
+    };
+
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/events/data/upload/`, formData);
+      console.log(response.data); // Process response data, e.g., show a success message
+    } catch (error) {
+      console.error("Error uploading event:", error);
+      // Process error, e.g., show an error message
+    }
+  };
+
 
   const [curves, setCurves] = useState(['']);
 
@@ -34,122 +60,168 @@ const CreateEvent = () => {
         <div className="bg-black p-8 rounded-md">
           <h1 className="text-5xl font-bold mb-6 text-white">Create New Event</h1>
           <p className="mb-20 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <h2 className="text-xl font-semibold mb-5 text-white">About The Event</h2>
+              <div className="w-full flex justify-between items-center md:flex-row flex-col pt-20 border-t-[2px] border-t-[#ffffff]"></div>
 
-          <div className="mb-4">
-            <h2 className="text-xl font-semibold mb-5 text-white">About The Event</h2>
-            <div className="w-full flex justify-between items-center md:flex-row flex-col pt-20 border-t-[2px] border-t-[#ffffff]"></div>
-            
-            <div>
+              <div>
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    <div>
-                      <label htmlFor="event" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                        Upcoming Event Name:
-                      </label>
-                      <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
-                    </div>
+                  <div>
+                    <label htmlFor="event" className="pb-1.5 block text-sm font-medium leading-6 text-white">
+                      Upcoming Event Name:
+                    </label>
+                    {/* <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" /> */}
+                    <input
+                      id="eventName"
+                      type="text"
+                      placeholder=""
+                      value={eventName}
+                      onChange={(e) => setEventName(e.target.value)}
+                      className="bg-eerieDark py-1 px-4 rounded w-full text-white"
+                    />
+                  </div>
 
-                    <div>
-                      <label htmlFor="genre" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                        Genre:
-                      </label>
-                      <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="date" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                        Date of Next Event:
-                      </label>
-                      <input type="date" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
-                    </div>
+                  <div>
+                    <label htmlFor="genre" className="pb-1.5 block text-sm font-medium leading-6 text-white">
+                      Genre:
+                    </label>
+                    {/* <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" /> */}
+                    <input
+                      id="genre"
+                      type="text"
+                      placeholder=""
+                      value={genre}
+                      onChange={(e) => setGenre(e.target.value)}
+                      className="bg-eerieDark py-1 px-4 rounded w-full text-white"
+                    />
+
+                  </div>
+
+                  <div>
+                    <label htmlFor="date" className="pb-1.5 block text-sm font-medium leading-6 text-white">
+                      Date of Next Event:
+                    </label>
+                    {/* <input type="date" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" /> */}
+                    <input
+                      id="date"
+                      type="date"
+                      value={eventDate}
+                      onChange={(e) => setEventDate(e.target.value)}
+                      className="bg-eerieDark py-1 px-4 rounded w-full text-white"
+                    />
+                  </div>
                 </div>
+              </div>
             </div>
-          </div>
 
-          <div className="mb-4">
-            <h2 className="text-xl font-semibold mb-4 mt-20 text-white">About The Venue</h2>
-            <div className="w-full flex justify-between items-center md:flex-row flex-col pt-20 border-t-[2px] border-t-[#ffffff]"></div>
+            <div className="mb-4">
+              <h2 className="text-xl font-semibold mb-4 mt-20 text-white">About The Venue</h2>
+              <div className="w-full flex justify-between items-center md:flex-row flex-col pt-20 border-t-[2px] border-t-[#ffffff]"></div>
 
-            <div>
+              <div>
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    <div>
-                      <label htmlFor="location" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                        Event Location:
-                      </label>
-                      <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
-                    </div>
+                  <div>
+                    <label htmlFor="location" className="pb-1.5 block text-sm font-medium leading-6 text-white">
+                      Event Location:
+                    </label>
+                    {/* <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" /> */}
+                    <input
+                      id="location"
+                      type="text"
+                      placeholder=""
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
+                      className="bg-eerieDark py-1 px-4 rounded w-full text-white"
+                    />
+                  </div>
 
-                    <div>
-                      <label htmlFor="venue" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                        Venue Name:
-                      </label>
-                      <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="capacity" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                        Venue Capacity:
-                      </label>
-                      <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
-                    </div>
+                  <div>
+                    <label htmlFor="venue" className="pb-1.5 block text-sm font-medium leading-6 text-white">
+                      Venue Name:
+                    </label>
+                    <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
+                  </div>
 
-                    <div>
-                      <label htmlFor="description" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                        Description:
-                      </label>
-                      <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
-                    </div>
+                  <div>
+                    <label htmlFor="capacity" className="pb-1.5 block text-sm font-medium leading-6 text-white">
+                      Venue Capacity:
+                    </label>
+                    <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
+                  </div>
+
+                  <div>
+                    <label htmlFor="description" className="pb-1.5 block text-sm font-medium leading-6 text-white">
+                      Description:
+                    </label>
+                    {/* <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" /> */}
+                    <input
+                      id="description"
+                      type="text"
+                      value={description}
+                      placeholder=""
+                      onChange={(e) => setDescription(e.target.value)}
+                      className="bg-eerieDark py-1 px-4 rounded w-full text-white"
+                    />
+                  </div>
                 </div>
+              </div>
             </div>
-          </div>
 
-          <div className="mb-4">
-            <h2 className="text-xl font-semibold mb-4 mt-20 text-white">About Your Business</h2>
-            <div className="w-full flex justify-between items-center md:flex-row flex-col pt-20 border-t-[2px] border-t-[#ffffff]"></div>
-            
-            <div>
+            <div className="mb-4">
+              <h2 className="text-xl font-semibold mb-4 mt-20 text-white">About Your Business</h2>
+              <div className="w-full flex justify-between items-center md:flex-row flex-col pt-20 border-t-[2px] border-t-[#ffffff]"></div>
+
+              <div>
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    <div>
-                      <label htmlFor="event" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                        Upcoming Event Name:
-                      </label>
-                      <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
-                    </div>
+                  <div>
+                    <label htmlFor="event" className="pb-1.5 block text-sm font-medium leading-6 text-white">
+                      Upcoming Event Name:
+                    </label>
+                    <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
+                  </div>
 
-                    <div>
-                      <label htmlFor="website" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                        Website:
-                      </label>
-                      <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="email" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                        Email:
-                      </label>
-                      <input type="email" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
-                    </div>
+                  <div>
+                    <label htmlFor="website" className="pb-1.5 block text-sm font-medium leading-6 text-white">
+                      Website:
+                    </label>
+                    <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
+                  </div>
 
-                    <div>
-                      <label htmlFor="tel" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                        Phone Number:
-                      </label>
-                      <input type="tel" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
-                    </div>
+                  <div>
+                    <label htmlFor="email" className="pb-1.5 block text-sm font-medium leading-6 text-white">
+                      Email:
+                    </label>
+                    <input type="email" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
+                  </div>
 
-                    <div>
-                      <label htmlFor="language" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                        Language:
-                      </label>
-                      <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
-                    </div>
+                  <div>
+                    <label htmlFor="tel" className="pb-1.5 block text-sm font-medium leading-6 text-white">
+                      Phone Number:
+                    </label>
+                    <input type="tel" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
+                  </div>
+
+                  <div>
+                    <label htmlFor="language" className="pb-1.5 block text-sm font-medium leading-6 text-white">
+                      Language:
+                    </label>
+                    <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
+                  </div>
                 </div>
+              </div>
+              <div className="text-center mt-20 rounded-2xl">
+                <button type="submit" className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-6 py-2 rounded-full">
+                  Upload Event
+                </button>
+              </div>
             </div>
-          </div>
+          </form>
 
           <div className="mb-4">
             <h2 className="text-xl font-semibold mb-4 mt-20 text-white">About The Event Ticket</h2>
             <div className="w-full flex justify-between items-center md:flex-row flex-col pt-20 border-t-[2px] border-t-[#ffffff]"></div>
-          
+
             <div>
               <div className="inline-grid">
                 <div className="gap-5">
@@ -160,8 +232,8 @@ const CreateEvent = () => {
                     <input type="text" placeholder="" className="bg-eerieDark rounded text-white w-[1000px]" />
                     <Button className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-3 rounded-xl" onClick={() => setOpenModal(true)}>Create</Button>
                   </div>
-                  
-                  <Modal  show={openModal} size="md" popup onClose={() => setOpenModal(false)} initialFocus={eventName}>
+
+                  <Modal show={openModal} size="md" popup onClose={() => setOpenModal(false)} initialFocus={eventName}>
                     <Modal.Header className="bg-black" />
                     <Modal.Body className="bg-black">
                       <div className="space-y-6 bg-black">
@@ -170,7 +242,7 @@ const CreateEvent = () => {
                           <div className="mb-2 block">
                             <Label htmlFor="text" value="Event Name" />
                           </div>
-                          <TextInput id="text" ref={eventName} placeholder="ERC720 Token" required />
+                          <TextInput id="text" value={eventName} placeholder="ERC720 Token" required />
                         </div>
                         <div>
                           <div className="mb-2 block">

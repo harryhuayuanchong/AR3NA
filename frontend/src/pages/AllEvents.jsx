@@ -1,44 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import styles from "../style";
+import axios from 'axios';
 import { EventCard } from "../components";
-import { one, two, three } from "../assets";
 
-const events = [
-  {
-    id: 1,
-    imageUrl: one,
-    title: 'Trending Event 1',
-    date: '2024/04/07 (Sun)',
-    location: 'Taiwan, Taipei',
-    link: '/event/1'
-  },
-  {
-    id: 2,
-    imageUrl: two,
-    title: 'Trending Event 2',
-    date: '2024/04/07 (Sun)',
-    location: 'Taiwan, Taipei',
-    link: '/event/2'
-  },
-  {
-    id: 3,
-    imageUrl: one,
-    title: 'Trending Event 3',
-    date: '2024/04/07 (Sun)',
-    location: 'Taiwan, Taipei',
-    link: '/event/3'
-  },
-  {
-    id: 4,
-    imageUrl: two,
-    title: 'Trending Event 4',
-    date: '2024/04/07 (Sun)',
-    location: 'Taiwan, Taipei',
-    link: '/event/4'
-  },
-];
 
 const AllEvents = () => {
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/events/`);
+        setEvents(response.data);
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
   return (
     <div className={`bg-black text-white ${styles.flexStart} ${styles.padding}`}>
       <div className={`${styles.boxWidth}`}>
@@ -68,7 +49,14 @@ const AllEvents = () => {
         </div>
         <div className="flex flex-wrap gap-16 items-center">
           {events.map((event) => (
-            <EventCard key={event.id} {...event} />
+            <EventCard key={event.id} {...{
+              id: event.id,
+              imageUrl: event.image,
+              title: event.name,
+              date: event.date.replace(/-/g, '/'),
+              location: event.location,
+              link: `/event/${event.id}`
+            }} />
           ))}
         </div>
       </div>
