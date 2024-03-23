@@ -24,9 +24,9 @@ const EventDetailPage = () => {
         </div>
 
         <div className="text-white">
-          <ul className="flex justify-start list-none p-0">
+          <ul className="flex justify-start list-none px-[12px]">
             {tabsData.map(tab => (
-              <li key={tab.name} className={`mr-4 last:mr-0 ${activeTab === tab.name ? "border-b-4 border-orange-500" : ""}`}>
+              <li key={tab.name} className={`mr-[50px] last:mr-0 ${activeTab === tab.name ? "border-b-4 border-orange-500" : ""}`}>
                 <button
                   className={`pb-2 ${activeTab === tab.name ? "text-click" : "hover:text-hover hover:border-hover border-b-2 border-transparent"}`}
                   onClick={() => setActiveTab(tab.name)}
