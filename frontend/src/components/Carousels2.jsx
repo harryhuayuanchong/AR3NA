@@ -5,15 +5,10 @@ import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 
 const CarouselItem = ({ imageUrl }) => {
+    console.log(imageUrl)
     return (
         <div className="carousel-item">
-        <img src={imageUrl} className="w-full object-cover" />
-        {/* <div className="carousel-caption">
-            <h3 className="text-4xl font-bold">{title}</h3>
-            <h4 className="text-xl">{subtitle}</h4>
-            <p>{date}</p>
-            <p>{location}</p>
-        </div> */}
+            <img src={imageUrl} className="w-full object-cover" />
         </div>
     );
 }; 

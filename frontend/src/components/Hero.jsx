@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "../style";
-import Carousels2 from "./Carousels";
+// import Carousels2 from "./Carousels2";
 import { Banner1 } from "../assets";
 import { Artboard1, Artboard2, Artboard3 } from "../assets";
 
@@ -24,7 +24,7 @@ const Hero = () => {
     <section id="home" className={`flex md:flex-row flex-col ${styles.paddingY}`}>
       <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
         <div>
-          <Carousels2 slides={slides} />
+          {/* <Carousels2 slides={slides} /> */}
         </div>
         
         <div className="relative w-full h-96 bg-black text-white">
@@ -34,10 +34,9 @@ const Hero = () => {
             <div className="text-center mb-4">
               <h1 className="text-4xl font-bold mb-2">Create Your Own Event</h1>
               <p className="text-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ut labore et dolore magna aliqua.</p>
-              <p className="text-xl">Taiwan, Taipei Arena</p>
             </div>
             <div className="text-center">
-              <p>Additional information here</p>
+              {/* <p>Additional information here</p> */}
             </div>
           </div>
         </div>
