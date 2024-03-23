@@ -9,6 +9,7 @@ const styles = {
   
     paddingX: "sm:px-16 px-6",
     paddingY: "sm:py-16 py-6",
+    paddingY2: "sm:py-0 py-16",
     padding: "sm:px-16 px-6 sm:py-12 py-4",
     paddingNew: "sm:px-16 px-6 sm:py-28 py-4",
   
