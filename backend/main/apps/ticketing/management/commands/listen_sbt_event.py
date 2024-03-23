@@ -10,7 +10,6 @@ class Command(BaseCommand):
     help = 'Listen to blockchain events and update the TicketSBT model accordingly.'
 
     def handle(self, *args, **options):
-        self.stdout.write(self.style.SUCCESS('Starting to listen for blockchain events...'))
 
         web3 = Web3(Web3.HTTPProvider(default_env.RPC_URL))
 
@@ -25,8 +24,8 @@ class Command(BaseCommand):
             for factory_event in factory_events:
                 erc1155_contract_address = factory_event['args']['_token_contract']
                 erc1155_contract = web3.eth.contract(address=erc1155_contract_address, abi=erc1155_abi)
-                erc1155_event_filter = erc1155_contract.events.TicketsUpdated.create_filter(fromBlock='latest')
-                erc1155_events = erc1155_event_filter.get_new_entries()
+                erc1155_event_filter = erc1155_contract.events.TicketsUpdated.create_filter(fromBlock=factory_event['blockNumber'] - 100)
+                erc1155_events = erc1155_event_filter.get_all_entries()
                 for erc1155_event in erc1155_events:
                     self.combine_event_data(factory_event, erc1155_event)
 

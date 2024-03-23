@@ -28,6 +28,7 @@ class Default:
     SBT_CONTRACT_ADDRESS:str
     SBT_CONTRACT_ABI:str
     RPC_URL:str
+    MINT_CLUB_CONTRACT_ADDRESS:str
     
 
 default_env = Default(
@@ -46,5 +47,6 @@ default_env = Default(
     FACTORY_CONTRACT_ABI=os.environ.get('FACTORY_CONTRACT_ABI'),
     SBT_CONTRACT_ADDRESS=os.environ.get('SBT_CONTRACT_ADDRESS'),
     SBT_CONTRACT_ABI=os.environ.get('SBT_CONTRACT_ABI'),
-    RPC_URL=os.environ.get('RPC_URL')
+    RPC_URL=os.environ.get('RPC_URL'),
+    MINT_CLUB_CONTRACT_ADDRESS=os.environ.get('MINT_CLUB_CONTRACT_ADDRESS'),
 )

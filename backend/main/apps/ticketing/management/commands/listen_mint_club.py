@@ -4,23 +4,23 @@ import requests
 import json
 import time
 import os
+from main.utils.env_loader import default_env
 from main.apps.ticketing.models import TicketBC
 
 class Command(BaseCommand):
     help = 'Continuously listen for MultiTokenCreated events and update or create TicketBC entries accordingly.'
 
     def handle(self, *args, **options):
-        web3 = Web3(Web3.HTTPProvider('https://eth-sepolia-public.unifra.io'))
+        web3 = Web3(Web3.HTTPProvider(default_env.RPC_URL))
 
         mintclub_abi = self.load_abi('MintClub.json')
-        mintclub_contract = web3.eth.contract(address='0x8dce343A86Aa950d539eeE0e166AFfd0Ef515C0c', abi=mintclub_abi)
+        mintclub_contract = web3.eth.contract(address=default_env.MINT_CLUB_CONTRACT_ADDRESS, abi=mintclub_abi)
 
         event_filter = mintclub_contract.events.MultiTokenCreated.create_filter(fromBlock='latest')
         print("Listening for MultiTokenCreated events...")
 
         while True:
             events = event_filter.get_new_entries()
-            print('events', events)
             if events:
                 for event in events:
                     tx_hash = event['transactionHash'].hex()

@@ -5,7 +5,7 @@ import "forge-std/Script.sol";
 import "../src/FactorySBT.sol";
 
 contract DeployTokenViaFactory is Script {
-    address factoryAddress = ;
+    address factoryAddress = 0x5FbDB2315678afecb367f032d93F642f64180aa3;
 
     function run() external {
         vm.startBroadcast();
