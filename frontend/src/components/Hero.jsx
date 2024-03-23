@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import styles from "../style";
-// import Carousels2 from "./Carousels2";
 import { Banner1 } from "../assets";
 import { Artboard1, Artboard2, Artboard3 } from "../assets";
 import Trending from "./Home/Trending";
 import ComingSoon from "./Home/ComingSoon";
+import { Link } from "react-router-dom";
 
 const slides = [
   {
@@ -28,6 +28,10 @@ const tabsData = [
 
 const Hero = () => {
   const [activeTab, setActiveTab] = useState('Trending Events');
+  
+  const handleClick = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const renderTabContent = () => {
     const activeTabData = tabsData.find(tab => tab.name === activeTab);
@@ -38,10 +42,10 @@ const Hero = () => {
     <section id="home" className={`flex md:flex-row flex-col ${styles.paddingY2}`}>
       <div>
         <div>
-          {/* <Carousels2 slides={slides} /> */}
+          <img src={Artboard1} alt="Image" className="w-full h-full" />
         </div>
 
-        <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6`}>
+        <div className={`flex-1 ${styles.flexStart} flex-col xl:px-0 sm:px-16 px-6 mt-[150px]`}>
           <div className="text-white">
             <ul className="flex justify-start list-none px-[12px]">
               {tabsData.map(tab => (
@@ -69,15 +73,22 @@ const Hero = () => {
 
           <div className="absolute inset-0 flex flex-col justify-center items-center p-4">
             <div className="text-center mb-4">
-              <h1 className="text-4xl font-bold mb-2">Create Your Own Event</h1>
-              <p className="text-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ut labore et dolore magna aliqua.</p>
+              <h1 className="text-4xl font-bold mb-[50px] font-anton">Create Your Own Event</h1>
+              <p className="text-xl w-[446px] h=[60px] font-montserrat">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ut labore et dolore magna aliqua.</p>
             </div>
-            <div className="text-center">
-              {/* <p>Additional information here</p> */}
+            <div className="text-center mt-[30px] rounded-2xl">
+              <Link to="/create-event">
+                <button 
+                  className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-6 py-2 rounded-xl"
+                  onClick={handleClick}  
+                >
+                  Create Now
+                </button>
+              </Link>
             </div>
           </div>
         </div>
-      </div> 
+      </div>
     </section>
   );
 };

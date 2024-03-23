@@ -40,9 +40,9 @@ const events = [
 
 const ComingSoon = () => {
     return (
-        <div className={`bg-black text-white ${styles.flexStart} ${styles.padding} `}>
+        <div className={`bg-black text-white ${styles.flexStart} ${styles.padding2} `}>
             <div className={`${styles.boxWidth}`}>
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-4">
                     {events.map((event) => (
                         <Card key={event.id} {...event} />
                     ))}

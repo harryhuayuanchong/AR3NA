@@ -109,12 +109,8 @@ export const footerLinks = [
         link: "https://www.hoobank.com/create/",
       },
       {
-        name: "Fans Ticket",
+        name: "Fans Mission",
         link: "https://www.hoobank.com/explore/",
-      },
-      {
-        name: "Bonding Curve",
-        link: "https://www.hoobank.com/terms-and-services/",
       },
     ],
   },

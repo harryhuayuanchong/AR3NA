@@ -13,7 +13,7 @@ const EventCard = ({ imageUrl, title, date, location, link }) => {
     >
         <div className="max-w-sm overflow-hidden shadow-lg rounded-3xl">
           <div>
-            <img className="w-[450px] h-[360px]" src={imageUrl} alt="Event"/>
+            <img className="w-[360px] h-[450px]" src={imageUrl} alt="Event"/>
           </div>
         </div>
         <div className="text-center py-8">

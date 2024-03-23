@@ -2,12 +2,10 @@ import React from "react";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Slider from 'react-slick';
-import { Link } from 'react-router-dom';
 
 const CarouselItem = ({ imageUrl }) => {
-    console.log(imageUrl)
     return (
-        <div className="carousel-item">
+        <div className="carousel-item block z-[-1] pb-[150px]">
             <img src={imageUrl} className="w-full object-cover" />
         </div>
     );
@@ -26,9 +24,9 @@ const Carousels = ({ slides }) => {
 
     return (
         <Slider {...settings}>
-        {slides.map(slide => (
-            <CarouselItem key={slide.id} {...slide} />
-        ))}
+            {slides.map(slide => (
+                <CarouselItem key={slide.id} {...slide} />
+            ))}
         </Slider>
     );
 };

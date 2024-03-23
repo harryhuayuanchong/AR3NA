@@ -5,7 +5,7 @@ import { Button, Modal, Label, TextInput } from 'flowbite-react';
 import { useState, useRef } from 'react';
 
 const CreateEvent = () => {
-  const [openModal, setOpenModal] = useState(false);
+  // const [openModal, setOpenModal] = useState(false);
 
   const [eventName, setEventName] = useState("");
   const [genre, setGenre] = useState("");
@@ -58,7 +58,7 @@ const CreateEvent = () => {
     <div className={`bg-black min-h-screen ${styles.flexStart} ${styles.paddingNew}`}>
       <div className={`${styles.boxWidth}`}>
         <div className="bg-black p-8 rounded-md">
-          <h1 className="text-5xl font-bold mb-6 text-white">Create New Event</h1>
+          <h1 className="text-5xl font-bold mb-6 text-white font-anton">Create New Event</h1>
           <p className="mb-20 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
@@ -211,8 +211,8 @@ const CreateEvent = () => {
                 </div>
               </div>
               <div className="text-center mt-20 rounded-2xl">
-                <button type="submit" className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-6 py-2 rounded-full">
-                  Upload Event
+                <button type="submit" className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-6 py-2 rounded-xl">
+                  Submit
                 </button>
               </div>
             </div>
@@ -230,38 +230,13 @@ const CreateEvent = () => {
                   </label>
                   <div className="flex gap-5">
                     <input type="text" placeholder="" className="bg-eerieDark rounded text-white w-[1000px]" />
-                    <Button className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-3 rounded-xl" onClick={() => setOpenModal(true)}>Create</Button>
+                    <Button 
+                      className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-3 rounded-xl"
+                      href="https://sepolia.etherscan.io/" target="_blank"
+                    >
+                      Create
+                    </Button>
                   </div>
-
-                  <Modal show={openModal} size="md" popup onClose={() => setOpenModal(false)} initialFocus={eventName}>
-                    <Modal.Header className="bg-black" />
-                    <Modal.Body className="bg-black">
-                      <div className="space-y-6 bg-black">
-                        <h3 className="text-xl font-medium text-gray-900 dark:text-white">Create SBT Token</h3>
-                        <div>
-                          <div className="mb-2 block">
-                            <Label htmlFor="text" value="Event Name" />
-                          </div>
-                          <TextInput id="text" value={eventName} placeholder="ERC720 Token" required />
-                        </div>
-                        <div>
-                          <div className="mb-2 block">
-                            <Label htmlFor="address" value="Address" />
-                          </div>
-                          <TextInput id="address" type="address" required />
-                        </div>
-                        <div className="w-full">
-                          <Button>Create SBT</Button>
-                        </div>
-                      </div>
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button onClick={() => setOpenModal(false)}>I accept</Button>
-                      <Button color="gray" onClick={() => setOpenModal(false)}>
-                        Decline
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
                 </div>
                 <div className="gap-5 mt-5">
                   <label htmlFor="bonding" className="pb-1.5 block text-sm font-medium leading-6 text-white">
@@ -289,7 +264,7 @@ const CreateEvent = () => {
               </div>
             </div>
             <div className="text-center mt-20 rounded-2xl">
-              <button className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-6 py-2 rounded-full">
+              <button className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-6 py-2 rounded-xl">
                 Submit
               </button>
             </div>

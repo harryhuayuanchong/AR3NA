@@ -7,6 +7,7 @@ import AllEvents from "../pages/AllEvents"
 import CreateEvent from "../pages/CreateEvent";
 import FansMission from "../pages/FansMission";
 import EventDetailPage from "../pages/EventDetailPage";
+import SBT from "../pages/SBT";
 import { user } from "../assets";
 
 const App = () => (
@@ -18,7 +19,7 @@ const App = () => (
         </div>
         <div className="flex">
           <ConnectButton
-            label="Connect" 
+            label="Connect"
             showBalance={false}
             chainStatus="icon"
           />
@@ -36,6 +37,7 @@ const App = () => (
         <Route path="/create-event" element={<CreateEvent />} />
         <Route path="/fans-mission" element={<FansMission />} />
         <Route path="/event/:id" element={<EventDetailPage />}></Route>
+        <Route path="/mission" element={<SBT />}></Route>
       </Routes>
 
       <div className="w-full flex justify-between items-center md:flex-row flex-col border-t-[2px] border-t-[#ffffff]"></div>

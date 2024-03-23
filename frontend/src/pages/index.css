@@ -4,6 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Anton-Regular";
+  src: local("Anton-Regular"),
+    url("../font/Anton/Anton-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat-Medium";
+  src: local("Montserrat-Medium"),
+    url("../font/Montserrat/Montserrat/static/Montserrat-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat-Regular";
+  src: local("Montserrat-Regular"),
+    url("../font/Montserrat/Montserrat/static/Montserrat-Regular.ttf") format("truetype");
+}
+
 :root {
   --black-gradient: linear-gradient(
     144.39deg,

@@ -28,7 +28,7 @@ import two from "./two.jpg";
 import three from "./three.jpg";
 import banner from "./banner.svg";
 import Banner1 from "./Banner1.png";
-import event1 from "./event1.jpg";
+import event1 from "./event1.png";
 import event2 from "./event2.jpg";
 import event3 from "./event3.jpg";
 import event4 from "./event4.jpeg";
@@ -42,6 +42,10 @@ import Artboard2 from "./Artboard2.jpg";
 import Artboard3 from "./Artboard3.jpg";
 import darkGradient from "./darkGradient.png";
 import user from "./user.svg";
+import AR3NA from "./AR3NA.svg";
+import seatplan from "./seatplan.jpg";
+import Mission from "./Mission.jpg";
+import InnerBanner from "./InnerBanner.jpg";
 
 export {
   airbnb,
@@ -87,5 +91,9 @@ export {
   Artboard2,
   Artboard3,
   darkGradient,
-  user
+  user,
+  AR3NA,
+  seatplan,
+  Mission,
+  InnerBanner
 };

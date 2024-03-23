@@ -18,10 +18,14 @@ module.exports = {
         ticketEmpty: '#FFF9F3',
         claim: '#FF6D3C',
         soldout: '#989898',
-        listColor: '#131313'
+        listColor: '#131313',
+        footer: '#989898'
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
+        anton: ["Anton-Regular", "sans-serif"],
+        montserrat: ["Montserrat-Regular", "sans-serif"],
+        montserratMedium: ["Montserrat-Medium", "sans-serif"],
       },
     },
     screens: {

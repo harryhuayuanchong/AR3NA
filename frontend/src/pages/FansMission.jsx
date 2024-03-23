@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "../style";
-import { one, two, three } from "../assets";
+import { event1, event2, event3, event4 } from "../assets";
 import { FansCard } from "../components";
+import { Link } from "react-router-dom";
 
 const events = [
   {
     id: 1,
-    imageUrl: one,
+    imageUrl: event1,
     title: '2024 IU H.E.R World Tour',
     date: '2024/04/07 (Sun)',
     location: 'Taiwan, Taipei',
@@ -14,7 +15,7 @@ const events = [
   },
   {
     id: 2,
-    imageUrl: two,
+    imageUrl: event2,
     title: 'Trending Event 2',
     date: '2024/04/07 (Sun)',
     location: 'Taiwan, Taipei',
@@ -22,7 +23,7 @@ const events = [
   },
   {
     id: 3,
-    imageUrl: one,
+    imageUrl: event3,
     title: 'Trending Event 3',
     date: '2024/04/07 (Sun)',
     location: 'Taiwan, Taipei',
@@ -30,7 +31,7 @@ const events = [
   },
   {
     id: 4,
-    imageUrl: two,
+    imageUrl: event4,
     title: 'Trending Event 4',
     date: '2024/04/07 (Sun)',
     location: 'Taiwan, Taipei'
@@ -39,11 +40,11 @@ const events = [
 
 const FansMission = () => {
   return (
-    <div className={`bg-black ${styles.flexStart} ${styles.padding}`}>
+    <div className={`bg-black ${styles.flexStart} ${styles.paddingNew}`}>
       <div className={`${styles.boxWidth}`}>
         <div className="bg-black p-8 rounded-md">
-            <h1 className="text-3xl font-bold mb-6 text-white">Fans Mission</h1>
-            <p className="mb-8 text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+            <h1 className="text-5xl font-bold mb-6 text-white font-anton">Fans Mission</h1>
+            <p className="mb-[80px] text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
             <div className="justify-between items-center block mt-8">
                 <div className="flex">
                     <button className="text-white mr-10">Trending Events ▼</button>
@@ -66,11 +67,13 @@ const FansMission = () => {
                     </span>
                 </div>
             </div>
-            <div className="w-full flex justify-between items-center md:flex-row flex-col mt-2 pt-6 border-t-[2px] border-t-[#ffffff]"></div>
+            <div className="w-full flex justify-between items-center md:flex-row flex-col border-t-[2px] border-t-[#ffffff] mb-[80px]"></div>
             <div className="flex flex-wrap -mx-2">
                 {events.map((event) => (
-                  <div className="p-2 md:w-1/2 xl:w-1/4 my-[30px]" key={event.id}> {/* This wrapper controls the width */}
-                    <FansCard {...event} />
+                  <div className="md:w-1/2 xl:w-1/2 my-[30px]" key={event.id}> {/* This wrapper controls the width */}
+                    <Link to="/mission">
+                      <FansCard {...event} />
+                    </Link>
                   </div>
                 ))}
             </div>
