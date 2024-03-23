@@ -13,7 +13,12 @@ module.exports = {
         hover: "#8FD8B5",
         click: "#FF6D3B",
         darkred: "#0F0F0F",
-        eerieDark: '#1B1B1B'
+        eerieDark: '#1B1B1B',
+        ticketLeft: '#72AD91',
+        ticketEmpty: '#FFF9F3',
+        claim: '#FF6D3C',
+        soldout: '#989898',
+        listColor: '#131313'
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

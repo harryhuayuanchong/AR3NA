@@ -3,28 +3,44 @@ import React from "react";
 const TicketCard = ({ ticket }) => {
   const { ticketsLeft, ticketType, date, price, isSoldOut } = ticket;
 
+  const ticketLeftBgColor = ticketsLeft > 0 ? 'bg-ticketLeft' : 'bg-Empty';
+  const claimButtonBgColor = isSoldOut ? 'bg-soldout cursor-default' : 'bg-claim hover:bg-orange-500';
+
   return (
-    <div className="bg-gray-800 text-white p-4 flex items-center justify-between rounded mb-4">
-      <div className="flex items-center">
-        <div className={`rounded-full p-4 mr-4 ${ticketsLeft > 0 ? 'bg-green-400' : 'bg-red-400'}`}>
-          <span className="text-2xl font-bold">{ticketsLeft}</span>
-        </div>
-        <div>
-          <h3 className="text-xl font-bold">{ticketType}</h3>
-          <p className="text-gray-400">{date}</p>
-        </div>
+    <div className="bg-listColor text-white p-8 flex justify-between items-center rounded mb-4 shadow-md">
+      <div className={`${ticketLeftBgColor} text-xl font-bold`}>
+        <div>Ticket Left:</div>
+        <span className="">{ticketsLeft}</span>
       </div>
+
       <div>
-        <div className="text-right">
-          <span className="text-2xl font-bold">{price}</span>
-          <span className="text-xl"> USDC</span>
-        </div>
-        <button className={`mt-2 px-6 py-2 rounded-full ${isSoldOut ? 'bg-gray-500' : 'bg-orange-400 hover:bg-orange-500'} focus:outline-none`}>
-          {isSoldOut ? 'Sold Out' : 'Claim Now'}
-        </button>
+
       </div>
     </div>
   );
+
+  // return (
+  //   <div className="bg-gray-800 text-white p-4 flex items-center justify-between rounded mb-4">
+  //     <div className="flex items-center">
+  //       <div className={`rounded-full p-4 mr-4 ${ticketsLeft > 0 ? 'bg-green-400' : 'bg-red-400'}`}>
+  //         <span className="text-2xl font-bold">{ticketsLeft}</span>
+  //       </div>
+  //       <div>
+  //         <h3 className="text-xl font-bold">{ticketType}</h3>
+  //         <p className="text-gray-400">{date}</p>
+  //       </div>
+  //     </div>
+  //     <div>
+  //       <div className="text-right">
+  //         <span className="text-2xl font-bold">{price}</span>
+  //         <span className="text-xl"> USDC</span>
+  //       </div>
+  //       <button className={`mt-2 px-6 py-2 rounded-full ${isSoldOut ? 'bg-gray-500' : 'bg-orange-400 hover:bg-orange-500'} focus:outline-none`}>
+  //         {isSoldOut ? 'Sold Out' : 'Claim Now'}
+  //       </button>
+  //     </div>
+  //   </div>
+  // );
 };
 
 const Ticket = () => {
