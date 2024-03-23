@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const EventCard = ({ imageUrl, title, date, location, link }) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const hoverStyles = isHovered ? 'text-or' : 'text-white';
+  const hoverStyles = isHovered ? 'text-hover' : 'text-white';
 
   return (
     <Link to={link}

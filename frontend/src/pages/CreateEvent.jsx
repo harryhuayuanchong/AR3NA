@@ -8,6 +8,26 @@ const CreateEvent = () => {
   const [openModal, setOpenModal] = useState(false);
   const eventName = useRef(null); // 這邊後續可以去監聽前面創建的eventName，將null修改成監聽結果
 
+  const [curves, setCurves] = useState(['']);
+
+  const addCurve = () => {
+    setCurves([...curves, '']); // Append an empty string to the curves array
+  };
+
+  // Function to update a specific address in the state
+  const updateCurve = (index, value) => {
+    const newCurves = [...curves];
+    newCurves[index] = value;
+    setCurves(newCurves);
+  };
+
+  // Function to remove a specific address input field
+  const removeCurve = (index) => {
+    const newCurves = [...curves];
+    newCurves.splice(index, 1); // Remove the element at the specific index
+    setCurves(newCurves);
+  };
+
   return (
     <div className={`bg-black min-h-screen ${styles.flexStart} ${styles.paddingNew}`}>
       <div className={`${styles.boxWidth}`}>
@@ -138,7 +158,7 @@ const CreateEvent = () => {
                       </label>
                       <div className="flex gap-5">
                         <input type="text" placeholder="" className="bg-eerieDark rounded text-white w-[1000px]" />
-                        <Button className="px-3 rounded-xl" onClick={() => setOpenModal(true)}>Create</Button>
+                        <Button className="white px-3 rounded-xl" onClick={() => setOpenModal(true)}>Create</Button>
                       </div>
                       
                       <Modal show={openModal} size="md" popup onClose={() => setOpenModal(false)} initialFocus={eventName}>
@@ -175,10 +195,24 @@ const CreateEvent = () => {
                       <label htmlFor="bonding" className="pb-1.5 block text-sm font-medium leading-6 text-white">
                         Bonding Curve:
                       </label>
-                      <div className="flex gap-5">
-                        <input type="text" placeholder="" className="bg-eerieDark rounded text-white w-[1000px]" />
-                        <Button className="px-3 rounded-xl" href="https://mint.club/create" target="_blank">Create</Button>
-                      </div>
+                      {curves.map((curve, index) => (
+                        <div key={index} className="flex gap-5 mb-5">
+                          <input
+                            type="text"
+                            value={curve}
+                            onChange={(e) => updateCurve(index, e.target.value)}
+                            className="bg-eerieDark rounded text-white w-[1000px]"
+                          />
+                          <Button className="px-3 rounded-xl" href="https://mint.club/create" target="_blank">Create</Button>
+                          {curves.length > 1 && (
+                            <h3 onClick={() => removeCurve(index)} className="px-3 py-2 rounded-xl text-white bg-red-500 hover:bg-red-600">
+                              Delete
+                            </h3>
+                          )}
+                        </div>
+                      ))}
+                      {/* Button to add new address input field */}
+                      <h3 onClick={addCurve} className="mt-4 text-white hover:text-hover underline">Add another curve</h3>
                     </div>
                 </div>
             </div>
