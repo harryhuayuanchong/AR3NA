@@ -7,6 +7,7 @@ import AllEvents from "../pages/AllEvents"
 import CreateEvent from "../pages/CreateEvent";
 import FansMission from "../pages/FansMission";
 import EventDetailPage from "../pages/EventDetailPage";
+import { user } from "../assets";
 
 const App = () => (
   <Router>
@@ -21,6 +22,9 @@ const App = () => (
             showBalance={false}
             chainStatus="icon"
           />
+        </div>
+        <div className="ml-4">
+          <img src={user} />
         </div>
       </div>
 

@@ -1,51 +1,49 @@
 import React, { useState } from "react";
 import styles from "../style";
-import { Tabs } from "flowbite-react";
 import { Banner, Info, SeatPlan, Ticket } from "../components/EventInner";
 
+const tabsData = [
+  { name: 'Informations', component: <Info /> },
+  { name: 'Seat Plan', component: <SeatPlan /> },
+  { name: 'Event Tickets', component: <Ticket /> },
+];
+
 const EventDetailPage = () => {
-    const [activeTab, setActiveTab] = useState('Information');
+  const [activeTab, setActiveTab] = useState('Informations');
 
-    return (
-        <div className={`bg-black ${styles.flexStart} ${styles.padding}`}>
-            <div className={`${styles.boxWidth}`}>
-                <div>
-                    <Banner />
-                </div>
+  const renderTabContent = () => {
+    const activeTabData = tabsData.find(tab => tab.name === activeTab);
+    return activeTabData ? activeTabData.component : null;
+  };
 
-                <div>
-                    <Tabs aria-label="Event tabs" id="event-tabs" className="text-white">
-                        <Tabs.Item
-                            active={activeTab === 'Informations'}
-                            onClick={() => setActiveTab('Informations')}
-                            title="Informations"
-                            className={activeTab === 'Informations' ? "border-b-2 border-blue-600 text-blue-600" : ""}
-                        >
-                            <Info />
-                        </Tabs.Item>
-
-                        <Tabs.Item
-                            active={activeTab === 'Seat Plan'}
-                            onClick={() => setActiveTab('Seat Plan')}
-                            title="Seat Plan"
-                            className={activeTab === 'Sear Plan' ? "border-b-2 border-blue-600 text-blue-600" : ""}
-                        >
-                            <SeatPlan />
-                        </Tabs.Item>
-                        
-                        <Tabs.Item
-                            active={activeTab === 'Event Tickets'}
-                            onClick={() => setActiveTab('Event Tickets')}
-                            title="Event Tickets"
-                            className={activeTab === 'Event Tickets' ? "border-b-2 border-blue-600 text-blue-600" : ""}
-                        >
-                            <Ticket />
-                        </Tabs.Item>
-                    </Tabs>
-                </div>
-            </div>
+  return (
+    <div className={`bg-black ${styles.flexStart} ${styles.padding}`}>
+      <div className={`${styles.boxWidth}`}>
+        <div>
+          <Banner />
         </div>
-    );
+
+        <div className="text-white">
+          <ul className="flex justify-start list-none p-0">
+            {tabsData.map(tab => (
+              <li key={tab.name} className={`mr-4 last:mr-0 ${activeTab === tab.name ? "border-b-4 border-orange-500" : ""}`}>
+                <button
+                  className={`pb-2 ${activeTab === tab.name ? "text-click" : "hover:text-hover hover:border-hover border-b-2 border-transparent"}`}
+                  onClick={() => setActiveTab(tab.name)}
+                >
+                  {tab.name}
+                </button>
+              </li>
+            ))}
+          </ul>
+          <div className="w-full flex justify-between items-center md:flex-row flex-col border-t-[2px] border-t-[#ffffff] -mt-[3px]"></div>
+          <div className="tab-content">
+            {renderTabContent()}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default EventDetailPage;

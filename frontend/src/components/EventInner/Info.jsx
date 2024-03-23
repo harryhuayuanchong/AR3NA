@@ -2,7 +2,7 @@ import React from "react";
 
 const Info = () => {
   return (
-    <div className="bg-black max-w-4xl mx-auto my-8 rounded shadow-lg text-white">
+    <div className="bg-black max-w-4xl my-8 rounded shadow-lg text-white">
       <h2 className="text-lg font-bold mb-4">
         The long-awaited IU finally came to Taipei after 4 years!
       </h2>
@@ -11,7 +11,7 @@ const Info = () => {
       </p>
 
       <div className="mb-6">
-        <h3 className="text-xl font-bold mb-2">Program Information</h3>
+        <h3 className="text-xl font-bold mb-2 underline">Program Information</h3>
         <p className="font-semibold">[2024 IU HER WORLD TOUR CONCERT IN TAIPEI]</p>
         <p className="my-1">- Starting date and time | April 6, 2024 (Saturday) 7PM</p>
         <p className="my-1">- Performance Venue | Taipei Arena (No. 2, Section 4, Nanjing East Road, Songshan District, Taipei City)</p>

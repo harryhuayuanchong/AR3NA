@@ -41,6 +41,7 @@ import Artboard1 from "./Artboard1.jpg";
 import Artboard2 from "./Artboard2.jpg";
 import Artboard3 from "./Artboard3.jpg";
 import darkGradient from "./darkGradient.png";
+import user from "./user.svg";
 
 export {
   airbnb,
@@ -85,5 +86,6 @@ export {
   Artboard1,
   Artboard2,
   Artboard3,
-  darkGradient
+  darkGradient,
+  user
 };
