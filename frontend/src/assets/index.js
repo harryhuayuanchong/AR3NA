@@ -46,6 +46,11 @@ import AR3NA from "./AR3NA.svg";
 import seatplan from "./seatplan.jpg";
 import Mission from "./Mission.jpg";
 import InnerBanner from "./InnerBanner.jpg";
+import pic1 from "./pic1.png";
+import pic2 from "./pic2.png";
+import pic3 from "./pic3.png";
+import pic4 from "./pic4.png";
+import Mission2 from "./Mission2.png";
 
 export {
   airbnb,
@@ -95,5 +100,10 @@ export {
   AR3NA,
   seatplan,
   Mission,
-  InnerBanner
+  InnerBanner,
+  pic1,
+  pic2,
+  pic3,
+  pic4,
+  Mission2
 };

@@ -1,13 +1,13 @@
 import React from "react";
 import styles from "../style";
-import { event1, event2, event3, event4 } from "../assets";
+import { pic1, pic2, pic3, pic4 } from "../assets";
 import { FansCard } from "../components";
 import { Link } from "react-router-dom";
 
 const events = [
   {
     id: 1,
-    imageUrl: event1,
+    imageUrl: pic1,
     title: '2024 IU H.E.R World Tour',
     date: '2024/04/07 (Sun)',
     location: 'Taiwan, Taipei',
@@ -16,7 +16,7 @@ const events = [
   },
   {
     id: 2,
-    imageUrl: event2,
+    imageUrl: pic2,
     title: 'Trending Event 2',
     date: '2024/04/07 (Sun)',
     location: 'Taiwan, Taipei',
@@ -25,7 +25,7 @@ const events = [
   },
   {
     id: 3,
-    imageUrl: event3,
+    imageUrl: pic3,
     title: 'Trending Event 3',
     date: '2024/04/07 (Sun)',
     location: 'Taiwan, Taipei',
@@ -34,7 +34,7 @@ const events = [
   },
   {
     id: 4,
-    imageUrl: event4,
+    imageUrl: pic4,
     title: 'Trending Event 4',
     date: '2024/04/07 (Sun)',
     location: 'Taiwan, Taipei',

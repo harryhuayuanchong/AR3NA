@@ -1,9 +1,9 @@
 import React from "react";
-import { Mission } from "../assets";
+import { Mission2 } from "../assets";
 
 const SBT = () => {
     return (
-        <div><img src={Mission} alt="Image" className="mx-auto" /></div>
+        <div><img src={Mission2} alt="Image" className="mx-auto" /></div>
     )
 }
 
