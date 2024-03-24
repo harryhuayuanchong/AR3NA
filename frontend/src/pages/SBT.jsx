@@ -3,7 +3,7 @@ import { Mission } from "../assets";
 
 const SBT = () => {
     return (
-        <div><image src={Mission} /></div>
+        <div><img src={Mission} alt="Image" className="mx-auto" /></div>
     )
 }
 

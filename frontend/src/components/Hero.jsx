@@ -73,8 +73,8 @@ const Hero = () => {
 
           <div className="absolute inset-0 flex flex-col justify-center items-center p-4">
             <div className="text-center mb-4">
-              <h1 className="text-4xl font-bold mb-[50px] font-anton">Create Your Own Event</h1>
-              <p className="text-xl w-[446px] h=[60px] font-montserrat">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ut labore et dolore magna aliqua.</p>
+              <h1 className="text-5xl font-bold mb-[50px] font-anton">Create Your Own Event</h1>
+              <p className="text-xl w-[520px] h=[60px] font-montserrat">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed ut labore et dolore magna aliqua.</p>
             </div>
             <div className="text-center mt-[30px] rounded-2xl">
               <Link to="/create-event">

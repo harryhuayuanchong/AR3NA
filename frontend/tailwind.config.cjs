@@ -16,10 +16,12 @@ module.exports = {
         eerieDark: '#1B1B1B',
         ticketLeft: '#72AD91',
         ticketEmpty: '#FFF9F3',
+        ticketEmptyText: '#FF6D3C',
         claim: '#FF6D3C',
         soldout: '#989898',
         listColor: '#131313',
-        footer: '#989898'
+        footer: '#989898',
+        listColorEmpty: '2B2B2B'
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

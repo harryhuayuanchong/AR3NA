@@ -11,7 +11,8 @@ const events = [
     title: '2024 IU H.E.R World Tour',
     date: '2024/04/07 (Sun)',
     location: 'Taiwan, Taipei',
-    participants: "1.06M"
+    participants: "1.06M",
+    link: "/mission"
   },
   {
     id: 2,
@@ -19,7 +20,8 @@ const events = [
     title: 'Trending Event 2',
     date: '2024/04/07 (Sun)',
     location: 'Taiwan, Taipei',
-    participants: "1.0M"
+    participants: "1.0M",
+    link: "/mission"
   },
   {
     id: 3,
@@ -27,14 +29,16 @@ const events = [
     title: 'Trending Event 3',
     date: '2024/04/07 (Sun)',
     location: 'Taiwan, Taipei',
-    participants: "1.9M"
+    participants: "1.9M",
+    link: "/mission"
   },
   {
     id: 4,
     imageUrl: event4,
     title: 'Trending Event 4',
     date: '2024/04/07 (Sun)',
-    location: 'Taiwan, Taipei'
+    location: 'Taiwan, Taipei',
+    link: "/mission"
   },
 ];
 
