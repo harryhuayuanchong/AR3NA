@@ -14,7 +14,7 @@ const FansCard = ({ imageUrl, title, date, location, link, participants }) => {
       {/* Image container */}
       <div className="flex bg-black rounded-3xl overflow-hidden shadow-xl">
         <div className="w-1/2">
-          <img className="object-cover h-full" src={imageUrl} alt="Event"/>
+          <img className="object-cover" src={imageUrl} alt="Event"/>
         </div>
 
         {/* Text container */}
