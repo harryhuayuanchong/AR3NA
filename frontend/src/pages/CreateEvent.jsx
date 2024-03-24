@@ -5,16 +5,15 @@ import { Button, Modal, Label, TextInput } from 'flowbite-react';
 import { useState, useRef } from 'react';
 
 const CreateEvent = () => {
-  // const [openModal, setOpenModal] = useState(false);
-
   const [eventName, setEventName] = useState("");
   const [genre, setGenre] = useState("");
   const [eventDate, setEventDate] = useState("");
   const [description, setDescription] = useState("");
   const [location, setLocation] = useState("");
+  const [eventId, setEventId] = useState(null);
 
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault();
 
     const formData = {
       name: eventName,
@@ -26,10 +25,32 @@ const CreateEvent = () => {
 
     try {
       const response = await axios.post(`${import.meta.env.VITE_API_URL}/events/data/upload/`, formData);
-      console.log(response.data); // Process response data, e.g., show a success message
+      console.log(response.data);
+      setEventId(response.data.event_id);
+      alert('Event data has been successfully uploaded.');
     } catch (error) {
       console.error("Error uploading event:", error);
-      // Process error, e.g., show an error message
+    }
+  };
+
+  const handleFinalSubmit = async () => {
+    if (!eventId) {
+      alert('Please first upload the event data');
+      return;
+    }
+
+    const data = {
+      event_id: eventId,
+      contract_addresses: curves.filter(curve => curve.trim() !== ''),
+    };
+
+    try {
+      await axios.post(`${import.meta.env.VITE_API_URL}/events/create/`, data);
+      alert('Event created successfully.');
+      window.location.href = '/all-events';
+    } catch (error) {
+      console.error("Error creating event with addresses:", error);
+      alert('Failed to create event. Please try again.');
     }
   };
 
@@ -37,20 +58,18 @@ const CreateEvent = () => {
   const [curves, setCurves] = useState(['']);
 
   const addCurve = () => {
-    setCurves([...curves, '']); // Append an empty string to the curves array
+    setCurves([...curves, '']);
   };
 
-  // Function to update a specific address in the state
   const updateCurve = (index, value) => {
     const newCurves = [...curves];
     newCurves[index] = value;
     setCurves(newCurves);
   };
 
-  // Function to remove a specific address input field
   const removeCurve = (index) => {
     const newCurves = [...curves];
-    newCurves.splice(index, 1); // Remove the element at the specific index
+    newCurves.splice(index, 1);
     setCurves(newCurves);
   };
 
@@ -71,7 +90,6 @@ const CreateEvent = () => {
                     <label htmlFor="event" className="pb-1.5 block text-sm font-medium leading-6 text-white">
                       Upcoming Event Name:
                     </label>
-                    {/* <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" /> */}
                     <input
                       id="eventName"
                       type="text"
@@ -86,7 +104,6 @@ const CreateEvent = () => {
                     <label htmlFor="genre" className="pb-1.5 block text-sm font-medium leading-6 text-white">
                       Genre:
                     </label>
-                    {/* <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" /> */}
                     <input
                       id="genre"
                       type="text"
@@ -102,7 +119,6 @@ const CreateEvent = () => {
                     <label htmlFor="date" className="pb-1.5 block text-sm font-medium leading-6 text-white">
                       Date of Next Event:
                     </label>
-                    {/* <input type="date" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" /> */}
                     <input
                       id="date"
                       type="date"
@@ -125,7 +141,6 @@ const CreateEvent = () => {
                     <label htmlFor="location" className="pb-1.5 block text-sm font-medium leading-6 text-white">
                       Event Location:
                     </label>
-                    {/* <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" /> */}
                     <input
                       id="location"
                       type="text"
@@ -154,7 +169,6 @@ const CreateEvent = () => {
                     <label htmlFor="description" className="pb-1.5 block text-sm font-medium leading-6 text-white">
                       Description:
                     </label>
-                    {/* <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" /> */}
                     <input
                       id="description"
                       type="text"
@@ -176,7 +190,7 @@ const CreateEvent = () => {
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                   <div>
                     <label htmlFor="event" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                      Upcoming Event Name:
+                      Your Company Name:
                     </label>
                     <input type="text" placeholder="" className="bg-eerieDark py-1 px-4 rounded w-full text-white" />
                   </div>
@@ -211,8 +225,8 @@ const CreateEvent = () => {
                 </div>
               </div>
               <div className="text-center mt-20 rounded-2xl">
-                <button type="submit" className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-6 py-2 rounded-xl">
-                  Submit
+                <button type="submit" disabled={eventId !== null} className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-10 py-2 rounded-xl">
+                  Upload Event Data
                 </button>
               </div>
             </div>
@@ -226,13 +240,13 @@ const CreateEvent = () => {
               <div className="inline-grid">
                 <div className="gap-5">
                   <label htmlFor="sbt" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                    SBT:
+                    Ticket Address (Soulbound Token)
                   </label>
                   <div className="flex gap-5">
                     <input type="text" placeholder="" className="bg-eerieDark rounded text-white w-[1000px]" />
-                    <Button 
+                    <Button
                       className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-3 rounded-xl"
-                      href="https://sepolia.etherscan.io/" target="_blank"
+                      href="https://sepolia.etherscan.io/address/0x417e845982933d37f1b473b5a03f660f9e32466b#writeContract" target="_blank"
                     >
                       Create
                     </Button>
@@ -240,7 +254,7 @@ const CreateEvent = () => {
                 </div>
                 <div className="gap-5 mt-5">
                   <label htmlFor="bonding" className="pb-1.5 block text-sm font-medium leading-6 text-white">
-                    Bonding Curve:
+                    Ticket Address (Bonding Curve)
                   </label>
                   {curves.map((curve, index) => (
                     <div key={index} className="flex gap-5 mb-5">
@@ -258,14 +272,13 @@ const CreateEvent = () => {
                       )}
                     </div>
                   ))}
-                  {/* Button to add new address input field */}
-                  <h3 onClick={addCurve} className="mt-4 text-white hover:text-hover underline">Add another curve</h3>
+                  <h3 onClick={addCurve} className="mt-4 text-white hover:text-hover underline">Add another bonding curve</h3>
                 </div>
               </div>
             </div>
             <div className="text-center mt-20 rounded-2xl">
-              <button className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-6 py-2 rounded-xl">
-                Submit
+              <button onClick={handleFinalSubmit} className="text-white bg-gradient-to-r hover:text-hover border border-white hover:border-hover px-10 py-2 rounded-xl">
+                Create Event
               </button>
             </div>
           </div>

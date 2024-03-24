@@ -4,57 +4,22 @@ import axios from 'axios';
 import { EventCard } from "../components";
 import { event1, event2, event3, event4 } from "../assets";
 
-const events = [
-  {
-    id: 1,
-    imageUrl: event1,
-    title: 'Trending Event 1',
-    date: '2024/04/07 (Sun)',
-    location: 'Taiwan, Taipei',
-    link: '/event/1'
-  },
-  {
-    id: 2,
-    imageUrl: event2,
-    title: 'Trending Event 2',
-    date: '2024/04/07 (Sun)',
-    location: 'Taiwan, Taipei',
-    link: '/event/2'
-  },
-  {
-    id: 3,
-    imageUrl: event3,
-    title: 'Trending Event 3',
-    date: '2024/04/07 (Sun)',
-    location: 'Taiwan, Taipei',
-    link: '/event/3'
-  },
-  {
-    id: 4,
-    imageUrl: event4,
-    title: 'Trending Event 4',
-    date: '2024/04/07 (Sun)',
-    location: 'Taiwan, Taipei',
-    link: '/event/4'
-  },
-];
-
 
 const AllEvents = () => {
-  // const [events, setEvents] = useState([]);
+  const [events, setEvents] = useState([]);
 
-  // useEffect(() => {
-  //   const fetchEvents = async () => {
-  //     try {
-  //       const response = await axios.get(`${import.meta.env.VITE_API_URL}/events/`);
-  //       setEvents(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching events:', error);
-  //     }
-  //   };
+  useEffect(() => {
+    const fetchEvents = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_API_URL}/events/`);
+        setEvents(response.data);
+      } catch (error) {
+        console.error('Error fetching events:', error);
+      }
+    };
 
-  //   fetchEvents();
-  // }, []);
+    fetchEvents();
+  }, []);
 
   return (
     <div className={`bg-black text-white ${styles.flexStart} ${styles.paddingNew}`}>
@@ -84,7 +49,7 @@ const AllEvents = () => {
             <div className="w-full flex justify-between items-center md:flex-row flex-col border-t-[2px] border-t-[#ffffff] mt-[17px]"></div>
         </div>
         <div className="flex flex-wrap gap-[6.2rem] items-center">
-          {/* {events.map((event) => (
+          {events.map((event) => (
             <EventCard key={event.id} {...{
               id: event.id,
               imageUrl: event.image,
@@ -93,10 +58,6 @@ const AllEvents = () => {
               location: event.location,
               link: `/event/${event.id}`
             }} />
-          ))} */}
-
-          {events.map((event) => (
-            <EventCard key={event.id} {...event} />
           ))}
         </div>
       </div>
