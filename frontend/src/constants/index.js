@@ -114,44 +114,6 @@ export const footerLinks = [
       },
     ],
   },
-  // {
-  //   title: "Community",
-  //   links: [
-  //     {
-  //       name: "Help Center",
-  //       link: "https://www.hoobank.com/help-center/",
-  //     },
-  //     {
-  //       name: "Partners",
-  //       link: "https://www.hoobank.com/partners/",
-  //     },
-  //     {
-  //       name: "Suggestions",
-  //       link: "https://www.hoobank.com/suggestions/",
-  //     },
-  //     {
-  //       name: "Blog",
-  //       link: "https://www.hoobank.com/blog/",
-  //     },
-  //     {
-  //       name: "Newsletters",
-  //       link: "https://www.hoobank.com/newsletters/",
-  //     },
-  //   ],
-  // },
-  // {
-  //   title: "Partner",
-  //   links: [
-  //     {
-  //       name: "Our Partner",
-  //       link: "https://www.hoobank.com/our-partner/",
-  //     },
-  //     {
-  //       name: "Become a Partner",
-  //       link: "https://www.hoobank.com/become-a-partner/",
-  //     },
-  //   ],
-  // },
 ];
 
 export const socialMedia = [
@@ -174,24 +136,5 @@ export const socialMedia = [
     id: "social-media-4",
     icon: linkedin,
     link: "https://www.linkedin.com/",
-  },
-];
-
-export const clients = [
-  {
-    id: "client-1",
-    logo: airbnb,
-  },
-  {
-    id: "client-2",
-    logo: binance,
-  },
-  {
-    id: "client-3",
-    logo: coinbase,
-  },
-  {
-    id: "client-4",
-    logo: dropbox,
   },
 ];
