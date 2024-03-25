@@ -23,6 +23,9 @@ While the dynamic pricing mechanism of the Bonding Curve offers several advantag
 
 Soulbound Token (Sepolia): [0x417E845982933d37F1b473b5A03F660f9e32466b](https://sepolia.etherscan.io/address/0x417e845982933d37f1b473b5a03f660f9e32466b)
 
+# Team Introduction
+<img width="1188" alt="TeamMember" src="https://github.com/harryhuayuanchong/AR3NA/assets/27807409/50734028-e074-414b-922c-41ba38e9b1cd">
+
 # Setup
 ## Smart Contract
 ### Setup environmental variables
