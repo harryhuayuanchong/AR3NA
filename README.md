@@ -22,3 +22,79 @@ While the dynamic pricing mechanism of the Bonding Curve offers several advantag
 - **Whitelist Control:** Event organizers have the capability to create and manage a whitelist, specifying who is eligible to claim tickets. This feature not only restricts access to genuine participants but also allows for targeted distribution strategies, such as prioritizing long-time fans or specific community members.
 
 Soulbound Token (Sepolia): [0x417E845982933d37F1b473b5A03F660f9e32466b](https://sepolia.etherscan.io/address/0x417e845982933d37f1b473b5a03f660f9e32466b)
+
+# Setup
+## Smart Contract
+### Setup environmental variables
+```bash
+cd contract
+```
+
+```bash
+cp .env.sample .env
+```
+
+### Deploy FactorySBT & Use FactorySBT to Deploy SBT
+```bash
+forge build
+```
+
+```bash
+forge script script/FactorySBT.s.sol --broadcast --fork-url $RPC_URL --private-key $PRIVATE_KEY
+```
+
+```bash
+forge script script/DeploySBT.s.sol --broadcast --fork-url $RPC_URL --private-key $PRIVATE_KEY
+```
+
+## Backend
+### Setup environmental variables
+```bash
+cd backend
+```
+
+```bash
+cp .env.sample .env
+```
+
+### Using pipenv
+```bash
+mkdir .venv
+pipenv --python 3.10
+pipenv shell
+```
+
+### Install the requirements
+```bash
+pip install -r requirements/base.txt
+```
+
+### Create database tables 
+```bash
+python manage.py migrate
+```
+
+### Run backend server
+```bash
+python manage.py runserver
+```
+
+## Frontend
+### Setup environmental variables
+```bash
+cd frontend
+```
+
+```bash
+cp .env.sample .env
+```
+
+### Install the package
+```bash
+yarn
+```
+
+### Run frontend
+```bash
+yarn start
+```
