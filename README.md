@@ -1,8 +1,10 @@
 # AR3NA
+![cover](https://github.com/harryhuayuanchong/AR3NA/assets/80409863/eea80e3c-ba19-4e33-9fd2-95bf475aa756)
+
 AR3NA is a web3-based event platform that enables users to host and manage events smoothly. By integrating the Mint Club Protocol, our platform enables the use of Bonding Curve ERC1155 Tokens, which are designed to serve as event tickets. This integration offers a dynamic pricing mechanism that responds to real-time market demand. Additionally, AR3NA supports the use of ERC1155-based Soulbound Tokens (SBTs), specifically designed to restrict ticket transferability and prevent resale, ensuring tickets reach their intended audience and fostering a more equitable ticketing experience. The platform also includes a whitelist feature, allowing event organizers to precisely control who can claim tickets, thus enhancing the customization and management of events.
 
-![Flow 1](README_image/flow1.png)
-![Flow 2](README_image/flow2.png)
+![flow1](https://github.com/harryhuayuanchong/AR3NA/assets/80409863/66ad868c-40d1-4a5e-bfa1-cf8a43cffd81)
+![flow2](https://github.com/harryhuayuanchong/AR3NA/assets/80409863/5330ad08-cb74-43c2-b56c-0db59730a73c)
 
 ## Why Use Bonding Curve?
 - **Dynamic Pricing Mechanism:** The use of Bonding Curve NFTs allows for dynamic pricing, where ticket prices automatically rise with increasing demand and fall as demand decreases. This mechanism helps event organizers to maximize their revenue by ensuring that ticket prices adjust in real time to the market demand.
@@ -24,7 +26,7 @@ While the dynamic pricing mechanism of the Bonding Curve offers several advantag
 Soulbound Token (Sepolia): [0x417E845982933d37F1b473b5A03F660f9e32466b](https://sepolia.etherscan.io/address/0x417e845982933d37f1b473b5a03f660f9e32466b)
 
 # Team Introduction
-<img width="1188" alt="TeamMember" src="https://github.com/harryhuayuanchong/AR3NA/assets/27807409/50734028-e074-414b-922c-41ba38e9b1cd">
+![team](https://github.com/harryhuayuanchong/AR3NA/assets/80409863/59377ccb-c3fd-4709-9db2-92a59859a82c)
 
 # Setup
 ## Smart Contract
