@@ -11,7 +11,7 @@ AR3NA is a web3-based event platform that enables users to host and manage event
 - **Impact of Information Transparency:** The Bonding Curve model is typically associated with higher levels of market transparency, meaning that all participants can see how ticket prices change in response to demand. This transparency reduces the asymmetry of information, making it difficult for scalpers to exploit buyers lacking market information. Buyers are better informed about how ticket prices evolve over time and may opt to purchase at lower prices directly, rather than buying at inflated prices from scalpers.
 
 
-- **Increased Scalper Risk:** The Bonding Curve's dynamic pricing mechanism elevates the risk for scalpers by requiring them not only to buy tickets early, hoping for a rise in demand and prices, but also to precisely predict when demand and prices will peak. This dual challenge significantly increases their risk. A misjudgment in predicting demand peaks can lead to purchasing at too high a price, reducing the margin for profitable resale. This heightened unpredictability and risk could deter scalping.
+- **Increased Scalper's Risk:** The Bonding Curve's dynamic pricing mechanism elevates the risk for scalpers by requiring them not only to buy tickets early, hoping for a rise in demand and prices, but also to precisely predict when demand and prices will peak. This dual challenge significantly increases their risk. A misjudgment in predicting demand peaks can lead to purchasing at too high a price, reducing the margin for profitable resale. This heightened unpredictability and risk could deter scalping.
 
 
 ## Soulbound Token
